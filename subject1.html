@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject 1 - Teacher Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="text-center">
+        <h1>Subject 1</h1>
+        <p>Welcome, [Teacher Name]</p>
+    </header>
+
+    <div class="container">
+        <h2>Enter IA Marks for Students</h2>
+        <form>
+            <div class="form-group">
+                <label for="student1">Student 1</label>
+                <input type="text" class="form-control" id="student1" value="Alice Johnson" readonly required>
+                <input type="text" class="form-control mt-2" value="1CD21AI01" readonly required>
+                <input type="number" class="form-control mt-2" value="88" placeholder="IA Marks 1" required>
+                <input type="number" class="form-control mt-2" value="92" placeholder="IA Marks 2" required>
+            </div>
+            <div class="form-group">
+                <label for="student2">Student 2</label>
+                <input type="text" class="form-control" id="student2" value="David Lee" readonly required>
+                <input type="text" class="form-control mt-2" value="1CD21AI02" readonly required>
+                <input type="number" class="form-control mt-2" value="85" placeholder="IA Marks 1" required>
+                <input type="number" class="form-control mt-2" value="90" placeholder="IA Marks 2" required>
+            </div>
+            <div class="form-group">
+                <label for="student3">Student 3</label>
+                <input type="text" class="form-control" id="student3" value="Emma Davis" readonly required>
+                <input type="text" class="form-control mt-2" value="1CD21AI03" readonly required>
+                <input type="number" class="form-control mt-2" value="90" placeholder="IA Marks 1" required>
+                <input type="number" class="form-control mt-2" value="93" placeholder="IA Marks 2" required>
+            </div>
+            <div class="form-group">
+                <label for="student4">Student 4</label>
+                <input type="text" class="form-control" id="student4" value="Michael Brown" readonly>
+                <input type="text" class="form-control mt-2" value="1CD21AI04" readonly>
+                <input type="number" class="form-control mt-2" value="75" placeholder="IA Marks 1">
+                <input type="number" class="form-control mt-2" value="80" placeholder="IA Marks 2">
+            </div>
+            <div class="form-group">
+                <label for="student5">Student 5</label>
+                <input type="text" class="form-control" id="student5" value="Sophia Wilson" readonly>
+                <input type="text" class="form-control mt-2" value="1CD21AI05" readonly>
+                <input type="number" class="form-control mt-2" value="82" placeholder="IA Marks 1">
+                <input type="number" class="form-control mt-2" value="86" placeholder="IA Marks 2">
+            </div>
+                        
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <footer class="text-center">
+        <p>&copy; 2024 Cambridge College India. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

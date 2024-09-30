@@ -1,0 +1,90 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0077b6;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #0077b6;
+    border-bottom: 3px solid #0077b6;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.faculty, .topper, .events {
+    margin-bottom: 20px;
+}
+
+.faculty h3, .topper h3, .events h3 {
+    font-size: 1.2em;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.faculty ul, .topper ul, .events ul {
+    list-style: none;
+    padding: 0;
+}
+
+.faculty li, .topper li, .events li {
+    background-color: #e0f7fa;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+footer {
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 50px;
+}
+
+a {
+    color: #0077b6;
+    text-decoration: none;
+}
+
+.department-link {
+    background-color: #e0f7fa;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #0077b6;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    display: inline-block;
+    margin: 10px;
+}
+
+.department-link:hover {
+    background-color: #0077b6;
+    color: white;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Due Management - Cambridge College India</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="text-center">
+        <h1>No Due Management</h1>
+        <p>Welcome, [Teacher Name]</p>
+    </header>
+
+    <div class="container">
+        <h2 class="text-center">Manage Student Dues</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>IA Marks 1</th>
+                    <th>IA Marks 2</th>
+                    <th>IA Marks 3</th>
+                    <th>Assignment 1</th>
+                    <th>Assignment 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td><input type="number" value="85" class="form-control" readonly /></td>
+                    <td><input type="number" value="90" class="form-control" readonly /></td>
+                    <td><input type="number" value="88" class="form-control" readonly /></td>
+                    <td><input type="checkbox" checked disabled /></td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>Alice Smith</td>
+                    <td><input type="number" value="78" class="form-control" readonly /></td>
+                    <td><input type="number" value="82" class="form-control" readonly /></td>
+                    <td><input type="number" value="80" class="form-control" readonly /></td>
+                    <td><input type="checkbox" checked disabled/></td>
+                    <td><input type="checkbox"  /></td>
+                </tr>
+                <tr>
+                    <td>Bob Johnson</td>
+                    <td><input type="number" value="88" class="form-control" readonly /></td>
+                    <td><input type="number" value="75" class="form-control" readonly /></td>
+                    <td><input type="number" value="80" class="form-control" readonly /></td>
+                    <td><input type="checkbox" checked disabled /></td>
+                    <td><input type="checkbox" checked disabled /></td>
+                </tr>
+                <tr>
+                    <td>Maria Garcia</td>
+                    <td><input type="number" value="92" class="form-control" readonly /></td>
+                    <td><input type="number" value="85" class="form-control" readonly /></td>
+                    <td><input type="number" value="79" class="form-control" readonly /></td>
+                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>Michael Brown</td>
+                    <td><input type="number" value="81" class="form-control" readonly /></td>
+                    <td><input type="number" value="87" class="form-control" readonly /></td>
+                    <td><input type="number" value="90" class="form-control" readonly /></td>
+                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <footer class="text-center">
+        <p>&copy; 2024 Cambridge College India. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

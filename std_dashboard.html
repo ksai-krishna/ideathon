@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Cambridge College India</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        footer {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #0077b6;
+            padding: 20px;
+            color: white;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -200px; /* Hidden initially */
+            width: 200px;
+            overflow: auto;
+            transition: 0.3s; /* Smooth transition */
+            z-index: 1000;
+        }
+
+        .sidebar.active {
+            left: 0; /* Shifts sidebar into view */
+        }
+
+        .sidebar a {
+            color: white;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth hover effect */
+        }
+
+        .sidebar a:hover {
+            background-color: #005f86; /* Darker shade on hover */
+        }
+
+        /* Hamburger Icon */
+        .menu-toggle {
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            z-index: 1100;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Change icon to "X" when sidebar is active */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Profile image */
+        .profile-img {
+            border-radius: 50%;
+            height: 120px;
+            width: 120px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                left: -200px;
+                width: 100%;
+            }
+
+            .sidebar.active {
+                left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="text-center">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <h1>Student Dashboard</h1>
+        <p>Welcome, Pavan</p>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <a href="#sem1">Semester 1</a>
+        <a href="#sem2">Semester 2</a>
+        <a href="#sem3">Semester 3</a>
+        <a href="#sem4">Semester 4</a>
+        <a href="#sem5">Semester 5</a>
+        <a href="#sem6">Semester 6</a>
+        <a href="#sem7">Semester 7</a>
+        <a href="#sem8">Semester 8</a>
+    </div>
+
+    <div class="content container" style="margin-left: 50px;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Attendance
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Attendance Percentage: <span class="text-success">92%</span></h5>
+                        <p>Classes Attended: 45/50</p>
+                        <p>Classes Missed: 5/50</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Student Profile
+                    </div>
+                    <div class="card-body text-center">
+                        <img src="https://via.placeholder.com/120" alt="Profile Image" class="profile-img">
+                        <h5 class="mt-3">Pavan Kumar</h5>
+                        <p><strong>Year:</strong> 3rd Year</p>
+                        <p><strong>Semester:</strong> 5th Semester</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IA Marks Section -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Internal Assessment Marks
+                    </div>
+                    <div class="card-body">
+                        <label for="subjectSelect">Select Subject:</label>
+                        <select class="form-control" id="subjectSelect" onchange="displayMarks()">
+                            <option value="" selected disabled>Choose Subject</option>
+                            <option value="Data Structures">Data Structures</option>
+                            <option value="Operating Systems">Operating Systems</option>
+                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        </select>
+                        <div class="mt-3">
+                            <h5>IA Marks: <span id="marksDisplay">---</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Fee Details
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Total Fee:</strong> ₹50,000</p>
+                        <p><strong>Paid Amount:</strong> ₹30,000</p>
+                        <p><strong>Fee Due:</strong> ₹20,000</p>
+                        <p><strong>Due Date:</strong> 15th October 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Library Books
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Book Title</th>
+                                    <th>Issued On</th>
+                                    <th>Return By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Data Structures and Algorithms</td>
+                                    <td>1st September 2024</td>
+                                    <td>15th September 2024</td>
+                                </tr>
+                                <tr>
+                                    <td>Operating Systems</td>
+                                    <td>5th September 2024</td>
+                                    <td>20th September 2024</td>
+                                </tr>
+                                <tr>
+                                    <td>Artificial Intelligence</td>
+                                    <td>10th September 2024</td>
+                                    <td>25th September 2024</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <p>&copy; 2024 Cambridge College India. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            // Toggle both the sidebar and the hamburger icon
+            sidebar.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+
+        // Function to display IA marks based on selected subject
+        function displayMarks() {
+            const subjectSelect = document.getElementById('subjectSelect');
+            const marksDisplay = document.getElementById('marksDisplay');
+            const selectedSubject = subjectSelect.value;
+
+            let marks;
+            if (selectedSubject === "Data Structures") {
+                marks = "IA1: 35/40, IA2: 39/40, IA3: N/A";
+            } else if (selectedSubject === "Operating Systems") {
+                marks = "IA1: 30/40, IA2: 38/40, IA3: 37/40";
+            } else if (selectedSubject === "Artificial Intelligence") {
+                marks = "IA1: 40/40, IA2: 35/40, IA3: N/A";
+            } else {
+                marks = "---";
+            }
+
+            marksDisplay.textContent = marks;
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

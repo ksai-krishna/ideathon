@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Cambridge College India</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+
+        .dashboard-section {
+            margin-top: 30px;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 30px;
+            color: #0077b6;
+        }
+
+        .list-group-item a {
+            color: #0077b6;
+            font-weight: bold;
+        }
+
+        .list-group-item a:hover {
+            text-decoration: none;
+            color: #005f86;
+        }
+
+        body, html {
+            height: 100%;        /* Ensure body takes up full height */
+            margin: 0;
+        }
+        body {
+            display: flex;       /* Make the body a flex container */
+            flex-direction: column;  /* Arrange children in column layout */
+            justify-content: space-between;  /* Space content between header and footer */
+        }
+
+        .content {
+            flex: 1;   /* Makes the content area grow to take up available space */
+        }
+        footer {
+            margin-top: auto;    /* Pushes the footer to the bottom when space allows */
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="text-center">
+        <h1>Teacher Dashboard</h1>
+        <p>Welcome, <strong>Frankenstein</strong></p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container dashboard-section">
+        <div class="row">
+            <!-- Teacher Info Card -->
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <i class="fas fa-user-tie icon mb-3"></i>
+                    <h5 class="card-title">Teacher Information</h5>
+                    <p><strong>Name:</strong> Frankenstein</p>
+                    <p><strong>Designation:</strong> Assistant Professor</p>
+                    <p><strong>Leaves Taken:</strong> 5 out of 365 Days</p>
+                </div>
+            </div>
+
+            <!-- Subjects Handled Card -->
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <i class="fas fa-book icon mb-3"></i>
+                    <h5 class="card-title">Subjects Handled</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="subject1.html">Subject 1</a></li>
+                        <li class="list-group-item"><a href="subject2.html">Subject 2</a></li>
+                        <li class="list-group-item"><a href="subject3.html">Subject 3</a></li>
+                        <li class="list-group-item"><a href="nodue.html">No Due Management</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Study Materials Card -->
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <i class="fas fa-folder-open icon mb-3"></i>
+                    <h5 class="card-title">Study Materials</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="materials/subject1_materials.html">Subject 1 Materials</a></li>
+                        <li class="list-group-item"><a href="materials/subject2_materials.html">Subject 2 Materials</a></li>
+                        <li class="list-group-item"><a href="materials/subject3_materials.html">Subject 3 Materials</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <p>&copy; 2024 Cambridge College India. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
