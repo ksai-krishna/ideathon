@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Due Update</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .table thead {
+            background-color: #0077b6;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #0077b6;
+            border-color: #0077b6;
+        }
+        .btn-primary:hover {
+            background-color: #005f99;
+            border-color: #005f99;
+        }
+        .form-select {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center mb-4">No Due Update</h2>
+        <form method="POST" action="/submit_no_due">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Student USN</th>
+                        <th scope="col">Subject Name</th>
+                        <th scope="col">IA Marks 1</th>
+                        <th scope="col">IA Marks 2</th>
+                        <th scope="col">IA Marks 3</th>
+                        <th scope="col">Assignment 1</th>
+                        <th scope="col">Assignment 2</th>
+                        <th scope="col">Fee Due</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1cd21ai01</td>
+                        <td>Introduction to Computer Science</td>
+                        <td>18</td>
+                        <td>17</td>
+                        <td>19</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd21ai01_CS101">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd21ai01_CS101">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>Paid</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd21ai02</td>
+                        <td>Calculus II</td>
+                        <td>20</td>
+                        <td>19</td>
+                        <td>18</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd21ai02_MAT202">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd21ai02_MAT202">
+                                <option value="not_submitted">Not Submitted</option>
+                                <option value="submitted">Submitted</option>
+                            </select>
+                        </td>
+                        <td>Due</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd21ai03</td>
+                        <td>Data Structures</td>
+                        <td>22</td>
+                        <td>21</td>
+                        <td>23</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd21ai03_CS202">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd21ai03_CS202">
+                                <option value="not_submitted">Not Submitted</option>
+                                <option value="submitted">Submitted</option>
+                            </select>
+                        </td>
+                        <td>Paid</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd21ai04</td>
+                        <td>Operating Systems</td>
+                        <td>17</td>
+                        <td>16</td>
+                        <td>19</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd21ai04_CS303">
+                                <option value="not_submitted">Not Submitted</option>
+                                <option value="submitted">Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd21ai04_CS303">
+                                <option value="not_submitted">Not Submitted</option>
+                                <option value="submitted">Submitted</option>
+                            </select>
+                        </td>
+                        <td>Due</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd21ai05</td>
+                        <td>Database Management Systems</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd21ai05_CS404">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd21ai05_CS404">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>Paid</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd22ai01</td>
+                        <td>Web Development</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>18</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd22ai01_CS505">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd22ai01_CS505">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>Due</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd22ai02</td>
+                        <td>Computer Networks</td>
+                        <td>22</td>
+                        <td>21</td>
+                        <td>23</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd22ai02_CS606">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd22ai02_CS606">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>Paid</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd22ai03</td>
+                        <td>Software Engineering</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd22ai03_CS707">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd22ai03_CS707">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>Due</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd22ai04</td>
+                        <td>Artificial Intelligence</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>20</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd22ai04_CS808">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd22ai04_CS808">
+                                <option value="not_submitted">Not Submitted</option>
+                                <option value="submitted">Submitted</option>
+                            </select>
+                        </td>
+                        <td>Paid</td> <!-- Fee Due status fixed -->
+                    </tr>
+                    <tr>
+                        <td>1cd22ai05</td>
+                        <td>Machine Learning</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>18</td>
+                        <td>
+                            <select class="form-select" name="assignment1_1cd22ai05_CS909">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" name="assignment2_1cd22ai05_CS909">
+                                <option value="submitted">Submitted</option>
+                                <option value="not_submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>Due</td> <!-- Fee Due status fixed -->
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit No Due Updates</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

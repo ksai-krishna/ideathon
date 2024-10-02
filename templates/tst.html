@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Cambridge College India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            overflow: hidden;
+            background-color: #0077b6; /* Main navbar color */
+            padding: 10px 20px; /* Increased padding for a larger navbar */
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: red; /* Hover color for main links */
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: red; /* Hover color for dropdown button */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd; /* Hover color for dropdown items */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Options 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#sem1">Semester 1</a>
+                <a href="#sem2">Semester 2</a>
+                <a href="#sem3">Semester 3</a>
+                <a href="#sem4">Semester 4</a>
+                <a href="#sem5">Semester 5</a>
+                <a href="#sem6">Semester 6</a>
+                <a href="#sem7">Semester 7</a>
+                <a href="#sem8">Semester 8</a>
+                <a href="#apply-documents">Apply for Documents</a>
+                <a href="#check-no-due-status">Check No Due Status</a>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; margin-right: 30px;">
+            <form action="{{ url_for('std_logout') }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+    

@@ -111,11 +111,7 @@
         <ul class="list-group">
             {% for subject in subjects %}
                 <li class="list-group-item">
-                    <form action="{{ url_for('subject_page', subject_name=subject.subject_name) }}" method="GET">
-                        <button type="submit" class="btn btn-primary btn-block" style="border: none; background: #0077b6; color: white; transition: background-color 0.3s;">
-                            {{ subject.subject_name }}
-                        </button>
-                    </form>
+                    <a href="{{ url_for('subject_page', subject_name=subject.subject_name) }}">{{ subject.subject_name }}</a>
                 </li>
             {% else %}
                 <li class="list-group-item">No subjects assigned</li>

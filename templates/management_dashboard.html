@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Management Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+
+        .card {
+            margin-top: 20px;
+        }
+
+        .nav-link {
+            color: #0077b6;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .approved {
+            background-color: #d4edda; /* Light green */
+        }
+
+        .rejected {
+            background-color: #f8d7da; /* Light red */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="text-center">
+        <h1>College Management Dashboard</h1>
+        <p>Welcome to Cambridge College India</p>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        Navigation
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a class="nav-link" href="#manageStudents">Manage Students</a></li>
+                        <li class="list-group-item"><a class="nav-link" href="#manageCourses">Manage Courses</a></li>
+                        <li class="list-group-item"><a class="nav-link" href="#certificateRequests">Certificate Requests</a></li>
+                        <li class="list-group-item"><a class="nav-link" href="#approveRequests">Approve Requests</a></li>
+                        <li class="list-group-item"><a class="nav-link" href="#printCertificates">Print Certificates</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div id="manageStudents" class="card">
+                    <div class="card-header">
+                        Manage Students
+                    </div>
+                    <div class="card-body">
+                        <p>Functionality to add, edit, or remove students.</p>
+                        <button class="btn btn-primary" onclick="addStudent()">Add Student</button>
+                        <ul id="studentList" class="list-group mt-2">
+                            <!-- Fake student data -->
+                            <li class="list-group-item">1CD21AI25 - John Doe <button class="btn btn-danger btn-sm float-right" onclick="removeStudent(this)">Remove</button></li>
+                            <li class="list-group-item">1CD21AI62 - Jane Smith <button class="btn btn-danger btn-sm float-right" onclick="removeStudent(this)">Remove</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="manageCourses" class="card">
+                    <div class="card-header">
+                        Manage Courses
+                    </div>
+                    <div class="card-body">
+                        <p>Functionality to add, edit, or remove courses.</p>
+                        <button class="btn btn-primary" onclick="addCourse()">Add Course</button>
+                        <ul id="courseList" class="list-group mt-2">
+                            <!-- Fake course data -->
+                            <li class="list-group-item">Computer Science <button class="btn btn-danger btn-sm float-right" onclick="removeCourse(this)">Remove</button></li>
+                            <li class="list-group-item">Mathematics <button class="btn btn-danger btn-sm float-right" onclick="removeCourse(this)">Remove</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="certificateRequests" class="card">
+                    <div class="card-header">
+                        Certificate Requests
+                    </div>
+                    <div class="card-body">
+                        <p>List of all certificate requests submitted by students.</p>
+                        <table class="table table-striped" id="requestsTable">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Student ID</th>
+                                    <th>Certificate Type</th>
+                                    <th>Reason for Request</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>1CD21AI25</td>
+                                    <td>Study Certificate</td>
+                                    <td>Need for further studies.</td>
+                                    <td>
+                                        <button class="btn btn-success" onclick="approveRequest(this)">Approve</button>
+                                        <button class="btn btn-danger" onclick="rejectRequest(this)">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jane Smith</td>
+                                    <td>1CD21AI62</td>
+                                    <td>Bonafide Certificate</td>
+                                    <td>Scholarship application.</td>
+                                    <td>
+                                        <button class="btn btn-success" onclick="approveRequest(this)">Approve</button>
+                                        <button class="btn btn-danger" onclick="rejectRequest(this)">Reject</button>
+                                    </td>
+                                </tr>
+                                <!-- Add more requests as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="approveRequests" class="card">
+                    <div class="card-header">
+                        Approve Requests
+                    </div>
+                    <div class="card-body">
+                        <p>Here you can approve or reject requests from students.</p>
+                        <!-- Approval confirmation will be handled in the requests table -->
+                    </div>
+                </div>
+
+                <div id="printCertificates" class="card">
+                    <div class="card-header">
+                        Print Certificates
+                    </div>
+                    <div class="card-body">
+                        <p>Option to print approved certificates.</p>
+                        <button class="btn btn-primary" onclick="printCertificates()">Print All Approved Certificates</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <p>&copy; 2024 Cambridge College India. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function addStudent() {
+            const studentName = prompt("Enter student name:");
+            const studentId = prompt("Enter student ID:");
+            if (studentName && studentId) {
+                const studentList = document.getElementById("studentList");
+                const li = document.createElement("li");
+                li.className = "list-group-item";
+                li.innerHTML = `${studentId} - ${studentName} <button class="btn btn-danger btn-sm float-right" onclick="removeStudent(this)">Remove</button>`;
+                studentList.appendChild(li);
+            }
+        }
+
+        function removeStudent(button) {
+            const li = button.parentElement;
+            li.remove();
+        }
+
+        function addCourse() {
+            const courseName = prompt("Enter course name:");
+            if (courseName) {
+                const courseList = document.getElementById("courseList");
+                const li = document.createElement("li");
+                li.className = "list-group-item";
+                li.innerHTML = `${courseName} <button class="btn btn-danger btn-sm float-right" onclick="removeCourse(this)">Remove</button>`;
+                courseList.appendChild(li);
+            }
+        }
+
+        function removeCourse(button) {
+            const li = button.parentElement;
+            li.remove();
+        }
+
+        function approveRequest(button) {
+            var row = button.closest('tr');
+            row.classList.add('approved');
+            row.querySelector('td:last-child').innerHTML = 'Approved';
+            disableButtons(row);
+        }
+
+        function rejectRequest(button) {
+            var row = button.closest('tr');
+            row.classList.add('rejected');
+            row.querySelector('td:last-child').innerHTML = 'Rejected';
+            disableButtons(row);
+        }
+
+        function disableButtons(row) {
+            var buttons = row.querySelectorAll('button');
+            buttons.forEach(function (btn) {
+                btn.disabled = true;
+            });
+        }
+
+        function printCertificates() {
+            var printContents = document.getElementById("requestsTable").outerHTML;
+            var newWindow = window.open('', '', 'height=600,width=800');
+            newWindow.document.write('<html><head><title>Approved Certificates</title>');
+            newWindow.document.write('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">');
+            newWindow.document.write('</head><body>');
+            newWindow.document.write(printContents);
+            newWindow.document.write('</body></html>');
+            newWindow.document.close();
+            newWindow.print();
+        }
+    </script>
+</body>
+
+</html>
