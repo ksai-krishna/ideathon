@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ subject_name }} - IA Marks</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .table thead {
+            background-color: #0077b6;
+            color: white;
+        }
+        footer {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center">{{ subject_name }} - IA Marks</h1>
+    <br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <form action="/subject/{{ subject_name }}" method="POST">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>USN</th>
+                    <th>Student Name</th>
+                    <th>IA Marks 1</th>
+                    <th>IA Marks 2</th>
+                    <th>IA Marks 3</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1BM18CS101</td>
+                    <td>Alice Johnson</td>
+                    <td>
+                        <input type="text" name="ia_marks1" value="75" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks2" value="80" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks3" value="78" class="form-control" required>
+                    </td>
+                    <td>
+                        <button type="submit" name="usn" value="1BM18CS101" class="btn btn-primary">Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1BM18CS102</td>
+                    <td>Bob Smith</td>
+                    <td>
+                        <input type="text" name="ia_marks1" value="68" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks2" value="74" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks3" value="72" class="form-control" required>
+                    </td>
+                    <td>
+                        <button type="submit" name="usn" value="1BM18CS102" class="btn btn-primary">Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1BM18CS103</td>
+                    <td>Charlie Brown</td>
+                    <td>
+                        <input type="text" name="ia_marks1" value="85" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks2" value="88" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks3" value="90" class="form-control" required>
+                    </td>
+                    <td>
+                        <button type="submit" name="usn" value="1BM18CS103" class="btn btn-primary">Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1BM18CS104</td>
+                    <td>Diana Prince</td>
+                    <td>
+                        <input type="text" name="ia_marks1" value="70" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks2" value="65" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks3" value="72" class="form-control" required>
+                    </td>
+                    <td>
+                        <button type="submit" name="usn" value="1BM18CS104" class="btn btn-primary">Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1BM18CS105</td>
+                    <td>Edward Elric</td>
+                    <td>
+                        <input type="text" name="ia_marks1" value="90" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks2" value="85" class="form-control" required>
+                    </td>
+                    <td>
+                        <input type="text" name="ia_marks3" value="87" class="form-control" required>
+                    </td>
+                    <td>
+                        <button type="submit" name="usn" value="1BM18CS105" class="btn btn-primary">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+    <p>&copy; 2024 Cambridge College India. All rights reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
