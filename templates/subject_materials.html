@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ subject_name }} - Study Materials</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">{{ subject_name }} - Study Materials</h2>
+        <ul class="list-group mt-4">
+            {% for pdf in pdfs %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('static', filename=pdf) }}" target="_blank">{{ pdf }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if pdfs|length == 0 %}
+            <p class="text-center">No study materials available for this subject.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

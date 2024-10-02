@@ -20,6 +20,13 @@ def get_db_connection():
 def index():
     return render_template('index.html')
 
+
+@app.route('/prof_logout', methods=['POST'])
+def prof_logout():
+    session.clear()  # Clear the user session
+    return redirect(url_for('prof_login'))  # Redirect to the login page
+
+
 @app.route('/student_login', methods=['GET', 'POST'])
 def student_login():
     if request.method == 'POST':
@@ -89,36 +96,127 @@ def prof_dashboard():
     # Assuming there's a `subjects` table and the teacher's subjects are associated with their email or id
     cursor.execute("SELECT subject_name FROM subject_handled WHERE teacher_email = %s", (email_id,))
     subjects = cursor.fetchall()  # Fetch all subjects handled by the teacher
-    for sub in subjects:
-        print(sub)
-        print("hi")
     conn.close()
     
     # Pass the subjects to the template
     return render_template('prof_dashboard.html', name=name, designation=designation, department=department, subjects=subjects)
 
 
-@app.route('/subject/<subject_name>', methods=['GET', 'POST'])
-def subject(subject_name):
-    if request.method == 'POST':
-        # Handle form submission for updating IA marks (if applicable)
-        pass
+@app.route('/subject/<subject_name>')
+def subject_page(subject_name):
+    # Logic to render the subject page
+    return render_template('subject.html', subject_name=subject_name)
 
-    # Fetch student details and IA marks for the specified subject
+@app.route('/subject/<subject_name>/update_attendance', methods=['GET', 'POST'])
+def update_attendance(subject_name):
+    # Get database connection
     conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("""
-        SELECT s.usn, s.name, ia.ia_marks1, ia.ia_marks2, ia.ia_marks3
-        FROM students s
-        JOIN ia_marks ia ON s.usn = ia.usn
-        JOIN subjects sub ON ia.subject_id = sub.subject_id
-        WHERE sub.subject_name = %s
-    """, (subject_name,))
-    students = cursor.fetchall()
-    conn.close()
-    
-    return render_template('subject.html', subject_name=subject_name, students=students)
+    cursor = conn.cursor(dictionary=True)  # Use dictionary=True to fetch rows as dictionaries
 
+    # Step 1: Fetch the subject_id using subject_name
+    cursor.execute("SELECT subject_id FROM subjects WHERE subject_name = %s", (subject_name,))
+    result = cursor.fetchone()
+
+    if not result:
+        # If the subject is not found, show an error or handle accordingly
+        
+        return redirect(url_for('prof_dashboard'))
+
+    # Safely access the subject_id from the result
+    subject_id = result.get('subject_id')
+
+    if request.method == 'POST':
+        # Process the form submission for attendance update
+        usn = request.form['usn']
+        attendance = request.form['attendance']
+
+        # Update the attendance in the database
+        cursor.execute(
+            "UPDATE attendance SET attendance = %s WHERE usn = %s AND subject_id = %s",
+            (attendance, usn, subject_id)
+        )
+        conn.commit()  # Commit the transaction
+
+        
+        return redirect(url_for('update_attendance', subject_name=subject_name))
+    
+    # Fetch students and their attendance for this subject
+    cursor.execute("SELECT s.usn,s.name, a.attendance FROM students s JOIN attendance a on s.usn = a.usn where a.subject_id = %s", (subject_id,))
+    
+    students = cursor.fetchall()
+
+    conn.close()  # Close the database connection
+
+    # Render the update attendance page
+    return render_template('update_attendance.html', subject_name=subject_name, students=students)
+
+
+
+@app.route('/subject/<subject_name>/update_ia_marks', methods=['GET', 'POST'])
+def update_ia_marks(subject_name):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)  # Use dictionary=True to fetch rows as dictionaries
+
+    # Step 1: Fetch the subject_id using subject_name
+    cursor.execute("SELECT subject_id FROM subjects WHERE subject_name = %s", (subject_name,))
+    result = cursor.fetchone()
+
+    if not result:
+        flash(f"Subject {subject_name} not found!", "danger")
+        return redirect(url_for('prof_dashboard'))
+
+    # Store subject_id in session
+    session['subject_id'] = result['subject_id']
+
+    # If the request method is POST, update the IA marks
+    if request.method == 'POST':
+        usn = request.form['usn']
+        ia_marks1 = request.form['ia_marks1']
+        ia_marks2 = request.form['ia_marks2']
+        ia_marks3 = request.form['ia_marks3']
+        
+        # Retrieve subject_id from session
+        subject_id = session.get('subject_id')
+
+        # Update the IA marks in the database
+        cursor.execute("""
+            UPDATE ia_marks 
+            SET ia_marks1 = %s, ia_marks2 = %s, ia_marks3 = %s 
+            WHERE usn = %s AND subject_id = %s
+        """, (ia_marks1, ia_marks2, ia_marks3, usn, subject_id))
+        conn.commit()  # Commit the transaction
+
+        
+        return redirect(url_for('update_ia_marks', subject_name=subject_name))
+
+    # Fetch students and their IA marks using JOIN
+    subject_id = session.get('subject_id')  # Retrieve subject_id from session
+    cursor.execute("""
+        SELECT students.usn, students.name, ia_marks.ia_marks1, ia_marks.ia_marks2, ia_marks.ia_marks3 
+        FROM students
+        JOIN ia_marks ON students.usn = ia_marks.usn
+        WHERE ia_marks.subject_id = %s
+    """, (subject_id,))
+    
+    students = cursor.fetchall()
+
+    conn.close()  # Close the database connection
+
+    # Render the update IA marks page
+    return render_template('update_ia_marks.html', subject_name=subject_name, students=students)
+
+@app.route('/subject_materials/<subject_name>')
+def subject_materials(subject_name):
+    # Retrieve the subject's materials (PDFs) from the database or filesystem
+    # For demonstration purposes, we'll use a placeholder list of PDFs.
+    # You should fetch this data based on the subject_name from your database or filesystem.
+    pdfs = [
+        f"{subject_name}_material1.pdf",
+        f"{subject_name}_material2.pdf",
+        f"{subject_name}_material3.pdf"
+    ]
+    
+    return render_template('subject_materials.html', subject_name=subject_name, pdfs=pdfs)
 
 
 
@@ -144,7 +242,6 @@ def submit_nodue():
     conn.commit()
     conn.close()
 
-    flash('No Due status updated successfully!', 'success')
     return redirect(url_for('prof_dashboard'))
 
 if __name__ == '__main__':

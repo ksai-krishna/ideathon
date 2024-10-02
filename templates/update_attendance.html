@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ subject_name }} - Update Attendance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center">{{ subject_name }} - Update Attendance</h1>
+    <form action="/subject/{{ subject_name }}/update_attendance" method="POST">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>USN</th>
+                    <th>Student Name</th>
+                    <th>Attendance (%)</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.usn }}</td>
+                    <td>{{ student.name }}</td>
+                    <td><input type="text" name="attendance" value="{{ student.attendance }}" class="form-control" required></td>
+                    <td><button type="submit" name="usn" value="{{ student.usn }}" class="btn btn-primary">Update</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

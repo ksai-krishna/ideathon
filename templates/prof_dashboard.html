@@ -59,27 +59,21 @@
         body,
         html {
             height: 100%;
-            /* Ensure body takes up full height */
             margin: 0;
         }
 
         body {
             display: flex;
-            /* Make the body a flex container */
             flex-direction: column;
-            /* Arrange children in column layout */
             justify-content: space-between;
-            /* Space content between header and footer */
         }
 
         .content {
             flex: 1;
-            /* Makes the content area grow to take up available space */
         }
 
         footer {
             margin-top: auto;
-            /* Pushes the footer to the bottom when space allows */
         }
     </style>
 </head>
@@ -88,7 +82,11 @@
     <!-- Header -->
     <header class="text-center">
         <h1>Teacher Dashboard</h1>
-        <p>Welcome, <strong>{{name}}</strong></p>
+        <p>Welcome, <strong>{{ name }}</strong></p>
+        <!-- Logout Button -->
+        <form action="{{ url_for('prof_logout') }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
     </header>
 
     <!-- Main Content -->
@@ -99,32 +97,33 @@
                 <div class="card text-center p-4">
                     <i class="fas fa-user-tie icon mb-3"></i>
                     <h5 class="card-title">Teacher Information</h5>
-                    <p><strong>Name:</strong> {{name}}</p>
-                    <p><strong>Designation:</strong> {{designation}}</p>
+                    <p><strong>Name:</strong> {{ name }}</p>
+                    <p><strong>Designation:</strong> {{ designation }}</p>
                     <p><strong>Leaves Taken:</strong> 5 out of 365 Days</p>
                 </div>
             </div>
 
-            <!-- Subjects Handled Card -->
-            <div class="col-md-4">
-                <div class="card text-center p-4">
-                    <i class="fas fa-book icon mb-3"></i>
-                    <h5 class="card-title">Subjects Handled</h5>
-                    <ul class="list-group">
-                        {% for subject in subjects %}
-                            <li class="list-group-item">
-                                <form action="{{ url_for('subject', subject_name=subject.subject_name) }}" method="GET">
-                                    <button type="submit" class="btn btn-primary btn-block" style="border: none; background: #0077b6; color: white; transition: background-color 0.3s;">
-                                        {{ subject.subject_name }}
-                                    </button>
-                                </form>
-                            </li>
-                        {% else %}
-                            <li class="list-group-item">No subjects assigned</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+<!-- Subjects Handled Card -->
+<div class="col-md-4">
+    <div class="card text-center p-4">
+        <i class="fas fa-book icon mb-3"></i>
+        <h5 class="card-title">Subjects Handled</h5>
+        <ul class="list-group">
+            {% for subject in subjects %}
+                <li class="list-group-item">
+                    <form action="{{ url_for('subject_page', subject_name=subject.subject_name) }}" method="GET">
+                        <button type="submit" class="btn btn-primary btn-block" style="border: none; background: #0077b6; color: white; transition: background-color 0.3s;">
+                            {{ subject.subject_name }}
+                        </button>
+                    </form>
+                </li>
+            {% else %}
+                <li class="list-group-item">No subjects assigned</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
 
             <!-- Study Materials Card -->
             <div class="col-md-4">
@@ -132,9 +131,13 @@
                     <i class="fas fa-folder-open icon mb-3"></i>
                     <h5 class="card-title">Study Materials</h5>
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="materials/subject1_materials.html">Subject 1 Materials</a></li>
-                        <li class="list-group-item"><a href="materials/subject2_materials.html">Subject 2 Materials</a></li>
-                        <li class="list-group-item"><a href="materials/subject3_materials.html">Subject 3 Materials</a></li>
+                        {% for subject in subjects %}
+                            <li class="list-group-item">
+                                <a href="{{ url_for('subject_materials', subject_name=subject.subject_name) }}">{{ subject.subject_name }} Materials</a>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item">No study materials available</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
